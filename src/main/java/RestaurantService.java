@@ -14,6 +14,13 @@ public class RestaurantService {
         throw new restaurantNotFoundException(restaurantName);
     }
 
+    public int orderTotalDisplay(List<Item> item){
+        int totalValue = 0;
+        for (Item myItem : item) {
+            totalValue += myItem.getPrice();
+        }
+        return totalValue;
+    }
 
     public Restaurant addRestaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         Restaurant newRestaurant = new Restaurant(name, location, openingTime, closingTime);

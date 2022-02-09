@@ -74,23 +74,23 @@ class RestaurantServiceTest {
     public void order_value_should_get_cumulative_total_when_collection_of_items_selected(){
         CreateResturant();
         menuItems = restaurant.getMenu();
-        assertEquals(388,restaurant.displayOrderTotal(menuItems));
+        assertEquals(388,service.orderTotalDisplay(menuItems));
     }
 
     @Test
     public void order_value_should_reduce_cumulative_total_when_an_item_removed(){
         CreateResturant();
         menuItems = restaurant.getMenu();
-        int total = restaurant.displayOrderTotal(menuItems);
+        int total = service.orderTotalDisplay(menuItems);
         int afterTotal = menuItems.get(1).getPrice();
         menuItems.remove(1);
-        assertEquals(total-afterTotal,restaurant.displayOrderTotal(menuItems));
+        assertEquals(total-afterTotal,service.orderTotalDisplay(menuItems));
     }
 
     @Test
     public void failing_case_order_value_should_get_cumulative_total_when_collection_of_items_selected(){
         CreateResturant();
         menuItems = restaurant.getMenu();
-        assertEquals(504,restaurant.displayOrderTotal(menuItems));
+        assertEquals(999,service.orderTotalDisplay(menuItems));
     }
 }
